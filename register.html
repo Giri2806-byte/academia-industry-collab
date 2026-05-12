@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Register / Sign In</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h2>Create account or Sign in</h2>
+      <div id="authMessage" class="auth-message"></div>
+      <div id="sessionInfo" style="margin-bottom:10px"></div>
+      <label for="username">Username or Email</label>
+      <input id="username" class="auth-input" placeholder="you@example.com or username">
+      <label for="password">Password</label>
+      <input id="password" type="password" class="auth-input" placeholder="password">
+
+      <div class="auth-actions">
+        <button class="cta-button" onclick="registerAccount()">Create account</button>
+        <button class="cta-button" onclick="signIn()">Sign in</button>
+      </div>
+
+      <hr>
+      <p style="font-size:0.9rem;color:var(--text-light)">This is a client-side demo: accounts are stored in your browser's localStorage only.</p>
+      <p style="margin-top:10px"><a href="index.html">Back to home</a></p>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    // Show session info if signed in
+    (function(){
+      const s = localStorage.getItem('demo_session');
+      const el = document.getElementById('sessionInfo');
+      if (s && el) { el.innerHTML = `Signed in as <strong>${s}</strong>. <a href="#" onclick="signOut()">Sign out</a>`; }
+    })();
+  </script>
+</body>
+</html>
